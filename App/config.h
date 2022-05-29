@@ -1,0 +1,19 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include "i2c.h"
+
+#define LOG_LIBS_PRINT_CUSTOM
+#define LOG_LIBS_PRINT_UART
+#define LOG_LIBS_USE_PRINTF 2
+
+#define SYSTEM_LED_BLINK_PEROD 500 // ms
+#define READ_COMMAND_BUF_LEN 200
+#define LOG_LIBS_PRINT_LEN 1000
+#define LOG_LIBS_TX_BUFFER_SIZE 0x400
+#define LOG_LIBS_RX_BUFFER_SIZE 0x400
+
+#define I2C_INSTANSE (hi2c1)
+#define I2C_MAX_DATA_SIZE 0xff
+
+#endif // !CONFIG_H
