@@ -10,6 +10,7 @@
 #include <inttypes.h>
 #include "application.h"
 #include "string.h"
+#include "pid.h"
 
 #define LOG_MODULE_NAME cli
 #if defined(LOG_LEVEL_CLI)
@@ -57,6 +58,19 @@ static const textToCmd_t textToCmdList[] =
              }
              return result;
          }},
+        {"-pid", "[set] [point] pid ctrl", [](const char *text) -> bool
+         {
+             if (strstr(text, "set"))
+             {
+                 uint32_t set_point = 0;
+                 sscanf(text, " set %d", &set_point);
+                 pid_set(set_point / 100.0);
+                 return true;
+             }
+             else
+                 return false;
+             return true;
+         }},
 };
 
 void CliReadTaskFunc(void *pvParameters)
@@ -66,25 +80,25 @@ void CliReadTaskFunc(void *pvParameters)
 
     for (;;)
     {
-    int8_t key = LogLibsGetChar();
-    if (key > 0)
-    {
-        if (((char)key == '\n') && (pos != 0))
+        int8_t key = LogLibsGetChar();
+        if (key > 0)
         {
-            // new string
-            buff[pos] = '\0';
-            pos = 0;
-            if (!CliParse(buff, textToCmdList, sizeof(textToCmdList) / sizeof(*textToCmdList)))
+            if (((char)key == '\n') && (pos != 0))
             {
-                LOG_WARNING("Wrong cmd! Help: -h");
+                // new string
+                buff[pos] = '\0';
+                pos = 0;
+                if (!CliParse(buff, textToCmdList, sizeof(textToCmdList) / sizeof(*textToCmdList)))
+                {
+                    LOG_WARNING("Wrong cmd! Help: -h");
+                }
+            }
+            else if (pos < (sizeof(buff) - 1))
+            {
+                buff[pos++] = key;
             }
         }
-        else if (pos < (sizeof(buff) - 1))
-        {
-            buff[pos++] = key;
-        }
-    }
-    vTaskDelay(100);
+        vTaskDelay(100);
     }
 }
 

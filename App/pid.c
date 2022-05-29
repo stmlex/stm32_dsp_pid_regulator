@@ -2,11 +2,11 @@
 #include "arm_math.h"
 
 static arm_pid_instance_f32 PID = {
-    .Kp = 0.1f,
-    .Ki = 0.001f,
+    .Kp = 0.9f,
+    .Ki = 0.08f,
     .Kd = 0.00f};
 
-static float pid_setpoint = 0;
+volatile static float pid_setpoint = 0;
 
 void pid_init(void)
 {
@@ -19,8 +19,8 @@ void pid_set(float sp){
 
 void pid_poll(void)
 {
-    static float pid_out = 0;
-    static float pid_error = 0;
+    volatile static float pid_out = 0;
+    volatile static float pid_error = 0;
     pid_error = pid_setpoint - pid_out;
     pid_out = arm_pid_f32(&PID, pid_error);
 }
