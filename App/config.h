@@ -2,6 +2,9 @@
 #define CONFIG_H
 
 #include "i2c.h"
+#include "rtos_libs.h"
+
+#define configSUPPORT_STATIC_ALLOCATION 1
 
 #define LOG_LIBS_PRINT_CUSTOM
 #define LOG_LIBS_PRINT_UART
@@ -13,7 +16,15 @@
 #define LOG_LIBS_TX_BUFFER_SIZE 0x400
 #define LOG_LIBS_RX_BUFFER_SIZE 0x400
 
+#define CDC_TRANSMIT_ATTEMPTS 1000
+
 #define I2C_INSTANSE (hi2c1)
 #define I2C_MAX_DATA_SIZE 0xff
+
+#define APP_TASK_STACK_SIZE (1024)      // in dword
+#define CLI_READ_TASK_STACK_SIZE (1024) // in dword
+
+#define APP_TASK_PRIORITY (FRTOS_PRIORITY_3)
+#define CLI_READ_TASK_PRIORITY (FRTOS_PRIORITY_1)
 
 #endif // !CONFIG_H
