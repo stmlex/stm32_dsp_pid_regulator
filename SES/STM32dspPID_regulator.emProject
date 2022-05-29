@@ -2,6 +2,7 @@
 <solution Name="STM32dspPID_regulator" target="8" version="2">
   <project Name="STM32dspPID_regulator">
     <configuration
+      CMSIS_DSP="Cortex-M4 Little Endian With FPU"
       LIBRARY_IO_TYPE="RTT"
       Name="Common"
       Target="STM32F401CC"
