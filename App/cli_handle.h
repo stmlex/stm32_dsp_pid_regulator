@@ -15,7 +15,7 @@ typedef struct
     bool (*func)(const char*/*text*/);
 } textToCmd_t;
 
-void CliReadTaskFunc(void);
+void CliReadTaskFunc(void *pvParameters);
 bool CliParse(const char *msg, const textToCmd_t *table, size_t tableLen);
 
 #ifdef __cplusplus

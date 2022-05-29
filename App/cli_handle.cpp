@@ -59,13 +59,13 @@ static const textToCmd_t textToCmdList[] =
          }},
 };
 
-void CliReadTaskFunc(void)
+void CliReadTaskFunc(void *pvParameters)
 {
     static char buff[READ_COMMAND_BUF_LEN] = {0};
     static uint8_t pos = 0;
 
-    // for (;;)
-    // {
+    for (;;)
+    {
     int8_t key = LogLibsGetChar();
     if (key > 0)
     {
@@ -84,8 +84,8 @@ void CliReadTaskFunc(void)
             buff[pos++] = key;
         }
     }
-    // vTaskDelay(100);
-    // }
+    vTaskDelay(100);
+    }
 }
 
 /**
