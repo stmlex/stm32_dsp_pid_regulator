@@ -15,7 +15,10 @@
                 "${workspaceFolder}/ks2_libs",
                 "${workspaceFolder}/ks2_libs/RTT",
                 "${workspaceFolder}/CubeMX/STM32F401CxUx/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
-                "${workspaceFolder}/CubeMX/STM32F401CxUx/Drivers/CMSIS/Include"
+                "${workspaceFolder}/CubeMX/STM32F401CxUx/Drivers/CMSIS/Include",
+                "${workspaceFolder}/FreeRTOS-Kernel/portable/GCC/ARM_CM4F",
+                "${workspaceFolder}/FreeRTOS-Kernel/include",
+                "${workspaceFolder}/lvgl"
             ],
             "defines": [
                 "_DEBUG",

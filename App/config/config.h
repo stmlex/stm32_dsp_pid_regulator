@@ -23,10 +23,16 @@
 
 #define APP_TASK_STACK_SIZE (1024)      // in dword
 #define CLI_READ_TASK_STACK_SIZE (1024) // in dword
+#define DISPLAY_TASK_STACK_SIZE (1024) // in dword
 
 #define APP_TASK_PRIORITY (FRTOS_PRIORITY_3)
 #define CLI_READ_TASK_PRIORITY (FRTOS_PRIORITY_1)
+#define DISPLAY_TASK_PRIORITY (FRTOS_PRIORITY_1)
 
 #define PID_POLLING_PERIOD (10)
 
+#define LV_TICK_PERIOD  (5)
+#define LV_TIMER_HANDLER_PERIOD  (10)
+// #define DISP_HOR_RES    (128)
+// #define DISP_VER_RES    (64)
 #endif // !CONFIG_H

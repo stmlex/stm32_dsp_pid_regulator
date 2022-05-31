@@ -8,6 +8,7 @@
 #include "pid.h"
 #include "rtos_libs.h"
 #include "pid.h"
+#include "display.h"
 
 bool host_com_port_open = false;
 void LogLibsPrintCustom(char *buff, int n)
@@ -35,15 +36,18 @@ TaskHandle_t CliReadTask;
 TaskHandle_t AppTask;
 TimerHandle_t PidPollTimer;
 
-void PidPollTimer_cb( TimerHandle_t xTimer ){
+void PidPollTimer_cb(TimerHandle_t xTimer)
+{
     pid_poll();
 }
 
 static void app_task(void *pvParameters)
 {
     FRTOS_TaskCreateStatic(CliReadTaskFunc, "cli_read", CLI_READ_TASK_STACK_SIZE, NULL, CLI_READ_TASK_PRIORITY, CliReadTask);
+    FRTOS_TaskCreateStatic(display_task, "display", DISPLAY_TASK_STACK_SIZE, NULL, DISPLAY_TASK_PRIORITY, DisplayTask);
     FRTOS_TimerCreateStatic("pid_poll", PID_POLLING_PERIOD, FRTOS_TIMER_AUTORELOAD, NULL, PidPollTimer_cb, PidPollTimer);
     pid_init();
+   
     xTimerStart(PidPollTimer, 0);
     for (;;)
     {
