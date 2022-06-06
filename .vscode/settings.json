@@ -2,5 +2,10 @@
     "files.associations": {
         "rtos_libs.h": "c",
         "config.h": "c"
-    }
+    },
+    "command-runner.commands": {
+
+        "ses": "SES\\STM32dspPID_regulator.emProject",
+        "cube": "CubeMX\\STM32F401CxUx\\STM32F401CxUx.ioc",
+    },
 }
