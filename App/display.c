@@ -1,6 +1,7 @@
 #include "display.h"
 #include "config.h"
 #include "lvgl.h"
+#include "ssd1306.h"
 
 TaskHandle_t DisplayTask;
 TimerHandle_t LVGLtickTimer;
@@ -45,6 +46,7 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
         {
             //TODO
             //set_pixel(x, y, *color_p);
+            ssd1306_DrawPixel(x,y,lv_color_to1(*color_p));
             color_p++;
         }
     }

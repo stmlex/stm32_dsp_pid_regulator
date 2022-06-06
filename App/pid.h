@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+void pid_init(void);
 void pid_poll(void);
 void pid_set(float sp);
 

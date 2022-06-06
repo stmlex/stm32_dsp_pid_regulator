@@ -18,7 +18,8 @@
                 "${workspaceFolder}/CubeMX/STM32F401CxUx/Drivers/CMSIS/Include",
                 "${workspaceFolder}/FreeRTOS-Kernel/portable/GCC/ARM_CM4F",
                 "${workspaceFolder}/FreeRTOS-Kernel/include",
-                "${workspaceFolder}/lvgl"
+                "${workspaceFolder}/lvgl",
+                "${workspaceFolder}/stm32-ssd1306/ssd1306"
             ],
             "defines": [
                 "_DEBUG",

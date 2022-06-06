@@ -9,6 +9,7 @@
 #include "rtos_libs.h"
 #include "pid.h"
 #include "display.h"
+#include "ssd1306.h"
 
 bool host_com_port_open = false;
 void LogLibsPrintCustom(char *buff, int n)
@@ -59,6 +60,7 @@ void application(void)
 {
     LOG_INFO("system reset");
     FRTOS_TaskCreateStatic(app_task, "App", APP_TASK_STACK_SIZE, NULL, APP_TASK_PRIORITY, AppTask);
+    ssd1306_Init();
     vTaskStartScheduler();
     while (true)
     {
