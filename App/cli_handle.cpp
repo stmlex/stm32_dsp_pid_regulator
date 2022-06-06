@@ -11,6 +11,7 @@
 #include "application.h"
 #include "string.h"
 #include "pid.h"
+#include "display.h"
 
 #define LOG_MODULE_NAME cli
 #if defined(LOG_LEVEL_CLI)
@@ -48,11 +49,13 @@ static const textToCmd_t textToCmdList[] =
              bool result = false;
              if (strstr(text, "on"))
              {
+                 lv_example_led_1(true);
                  LED_set(true);
                  result = true;
              }
              else if (strstr(text, "off"))
              {
+                 lv_example_led_1(false);
                  LED_set(false);
                  result = true;
              }

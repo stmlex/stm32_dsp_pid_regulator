@@ -14,6 +14,15 @@ static lv_disp_draw_buf_t draw_buf;
 static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES / 10]; /*Declare a buffer for 1/10 screen size*/
 
 static lv_disp_drv_t disp_drv; /*Descriptor of a display driver*/
+static void example_obj(void) {
+    lv_obj_t * label1 = lv_label_create(lv_scr_act());
+    lv_label_set_long_mode(label1, LV_LABEL_LONG_WRAP);     /*Break the long lines*/
+    lv_label_set_recolor(label1, true);                      /*Enable re-coloring by commands in the text*/
+    lv_label_set_text(label1, "BALBASHA");
+    lv_obj_set_width(label1, 150);  /*Set smaller width to make the lines wrap*/
+    lv_obj_set_style_text_align(label1, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_align(label1, LV_ALIGN_CENTER, 0, 0);
+}
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p);
 
 void display_task(void *pvParameters)
@@ -27,6 +36,7 @@ void display_task(void *pvParameters)
     disp_drv.hor_res = DISP_HOR_RES;                                             /*Set the horizontal resolution of the display*/
     disp_drv.ver_res = DISP_VER_RES;                                             /*Set the vertical resolution of the display*/
     lv_disp_drv_register(&disp_drv);                                                /*Finally register the driver*/
+    example_obj();
     xTimerStart(LVGLtickTimer, 0);
     for (;;)
     {
@@ -50,6 +60,12 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
             color_p++;
         }
     }
+    ssd1306_UpdateScreen();
 
     lv_disp_flush_ready(disp); /* Indicate you are ready with the flushing*/
+}
+
+void lv_example_led_1(bool state)
+{
+   ;
 }

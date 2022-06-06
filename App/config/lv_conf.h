@@ -1,7 +1,7 @@
 #ifndef LV_CONF_H
 #define LV_CONF_H
 
-#define LV_MEM_SIZE      (2U * 1024U)        /*Size memory used by `lv_mem_alloc` in bytes (>= 2kB)*/
+#define LV_MEM_SIZE      (3U * 1024U)        /*Size memory used by `lv_mem_alloc` in bytes (>= 2kB)*/
 #define DISP_HOR_RES          (128)
 #define DISP_VER_RES          (64)
 #define LV_ANTIALIAS         0       /*1: Enable anti-aliasing*/
@@ -15,5 +15,11 @@
 #define USE_LV_LOG      0   /*Enable/disable the log module*/
 // I turned off all the other themes
 #define USE_LV_THEME_MONO       1       /*Mono color theme for monochrome displays*/
+#define LV_USE_THEME_DEFAULT 0
+
+//#define LV_USE_LOG 3
+//#define LV_LOG_LEVEL LV_LOG_LEVEL_ERROR
+//#define LV_USE_ASSERT_MALLOC 1
+#define LV_USE_BTN        1
 
 #endif // !LV_CONF_H
