@@ -14,8 +14,9 @@ static lv_disp_draw_buf_t draw_buf;
 static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES / 10]; /*Declare a buffer for 1/10 screen size*/
 
 static lv_disp_drv_t disp_drv; /*Descriptor of a display driver*/
+static lv_obj_t * label1;
 static void example_obj(void) {
-    lv_obj_t * label1 = lv_label_create(lv_scr_act());
+    label1 = lv_label_create(lv_scr_act());
     lv_label_set_long_mode(label1, LV_LABEL_LONG_WRAP);     /*Break the long lines*/
     lv_label_set_recolor(label1, true);                      /*Enable re-coloring by commands in the text*/
     lv_label_set_text(label1, "BALBASHA");
@@ -56,7 +57,8 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
         {
             //TODO
             //set_pixel(x, y, *color_p);
-            ssd1306_DrawPixel(x,y,lv_color_to1(*color_p));
+            ssd1306_SetColor(lv_color_to1(*color_p));
+            ssd1306_DrawPixel(x,y);
             color_p++;
         }
     }
@@ -67,5 +69,5 @@ void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color
 
 void lv_example_led_1(bool state)
 {
-   ;
+   state ? lv_label_set_text(label1, "ON") : lv_label_set_text(label1, "OFF");
 }

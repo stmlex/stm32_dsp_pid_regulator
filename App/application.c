@@ -60,7 +60,10 @@ void application(void)
 {
     LOG_INFO("system reset");
     FRTOS_TaskCreateStatic(app_task, "App", APP_TASK_STACK_SIZE, NULL, APP_TASK_PRIORITY, AppTask);
+    MX_DMA_Init();
+    MX_I2C1_Init();
     ssd1306_Init();
+    ssd1306_FlipScreenVertically();
     vTaskStartScheduler();
     while (true)
     {

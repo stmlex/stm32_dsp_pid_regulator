@@ -19,7 +19,7 @@
                 "${workspaceFolder}/FreeRTOS-Kernel/portable/GCC/ARM_CM4F",
                 "${workspaceFolder}/FreeRTOS-Kernel/include",
                 "${workspaceFolder}/lvgl",
-                "${workspaceFolder}/stm32-ssd1306/ssd1306"
+                "${workspaceFolder}/stm32_ssd1306_i2c_dma_hal/Drivers"
             ],
             "defines": [
                 "_DEBUG",
