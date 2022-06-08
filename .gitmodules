@@ -7,3 +7,6 @@
 [submodule "stm32-ssd1306"]
 	path = stm32-ssd1306
 	url = https://github.com/afiskon/stm32-ssd1306.git
+[submodule "stm32_ssd1306_i2c_dma_hal"]
+	path = stm32_ssd1306_i2c_dma_hal
+	url = https://github.com/RobertoBenjami/stm32_ssd1306_i2c_dma_hal.git
